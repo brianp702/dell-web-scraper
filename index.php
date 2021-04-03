@@ -37,9 +37,11 @@ $productURL = 'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monito
 
 // NewClass returns StoreProduct object
 $instanceStoreProduct = new NewClass($productURL);
+
 // =======================
 // ================PUT ON GITHUB AND PUSH OFTEN
 // ================================
+
 pre_r($instanceStoreProduct);
 echo $instanceStoreProduct->getName();
 echo $instanceStoreProduct->getModel();
