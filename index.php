@@ -41,7 +41,7 @@ $instanceStoreProduct = new NewClass($productURL);
 
 
 // ================================
-// ================PUT ON GITHUB AND PUSH OFTEN
+// = PUT ON GITHUB AND PUSH OFTEN =
 // ================================
 
 pre_r($instanceStoreProduct);
