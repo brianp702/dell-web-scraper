@@ -38,7 +38,9 @@ $productURL = 'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monito
 // NewClass returns StoreProduct object
 $instanceStoreProduct = new NewClass($productURL);
 
-// =======================
+
+
+// ================================
 // ================PUT ON GITHUB AND PUSH OFTEN
 // ================================
 
@@ -50,7 +52,13 @@ echo $instanceStoreProduct->getPrice();
 
 exit;
 
-
+/* 
+create an additional class that, given a store's url, will do the following: 
+1.  Get the content for the page 
+2.  Pull out the name, model, and price 
+3.  Create a new StoreProduct object using that data 
+4.  Return the StoreProduct Object 
+*/ 
 
 
 
