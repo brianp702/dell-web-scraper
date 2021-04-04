@@ -5,24 +5,20 @@
  * Dell.com web scraper
  * known issues: doesn't work for laptops or "deals"
  */
-class NewClass extends StoreProduct 
+class DellProduct extends StoreProduct 
 {
 	private $url;
-	//private $siteContents;
-	//private $productPartNumber;
-	//private $productPrice;
-	//private $productName;
 
 	/**
-	 * NewClass constructor.
+	 * DellProduct constructor.
 	 *
 	 * @param string $url String with the URL of a product page at Dell.com
 	 * 
 	 * @return StoreProduct
 	 */
 	public function __construct($url)
-	{
-		
+	{		
+		// TODO: catch getSiteContents() returning false
 		$siteContents = $this->getSiteContents($url);
 		$productPartNumber = $this->getProductPartNumber($siteContents);
 		$productPrice = $this->getProductPrice($siteContents);
@@ -37,12 +33,9 @@ class NewClass extends StoreProduct
 		return $this;
 	}
 
-	private function getSiteContents($url)
+	private function getSiteContents($productURL)
 	{
-		// TODO ???????????
-		// TODO ?? $this->url = $url;
-
-		$html = file_get_contents($url);
+		$html = file_get_contents($productURL);
 		$dell_doc = new DOMDocument();
 		libxml_use_internal_errors(TRUE);
 	
@@ -52,7 +45,7 @@ class NewClass extends StoreProduct
 			$dell_xpath = new DOMXPath($dell_doc);
 			return $dell_xpath;
 		} else {
-			// TODO no page retrieved
+			return false;
 		}
 	}
 	
