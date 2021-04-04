@@ -13,6 +13,7 @@ class NewClass extends StoreProduct
      *
      * @param string $url String with the URL of a product page at Dell.com
 	 * 
+     * @return StoreProduct
      */
 	public function __construct($url)
 	{
@@ -64,9 +65,9 @@ class NewClass extends StoreProduct
 			}
 
 			$StoreProductInstance = new StoreProduct($productName,$productPartNumber,$productPrice);
-			echo 'from NewClass.php: ' . $StoreProductInstance->getName() . '<br />';
-			echo 'from NewClass.php: ' . $StoreProductInstance->getModel() . '<br />';
-			echo 'from NewClass.php: ' . $StoreProductInstance->getPrice() . '<br />';            
+			//echo 'from NewClass.php: ' . $StoreProductInstance->getName() . '<br />';
+			//echo 'from NewClass.php: ' . $StoreProductInstance->getModel() . '<br />';
+			//echo 'from NewClass.php: ' . $StoreProductInstance->getPrice() . '<br />';            
 			
 			// Create a new StoreProduct object using the scraped data
             parent::__construct($productName,$productPartNumber,$productPrice);

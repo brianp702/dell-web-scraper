@@ -37,28 +37,35 @@ $productURL = 'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monito
 
 // NewClass returns StoreProduct object
 $instanceStoreProduct = new NewClass($productURL);
+echo "<pre>";
+print_r($instanceStoreProduct);
+echo "</pre>";
+/* 
+NewClass Object
+(
+	[url:NewClass:private] => 
+	[name:StoreProduct:private] => Acer Ultrawide Monitor
+	[model:StoreProduct:private] => AUM 558
+	[price:StoreProduct:private] => 699.95
+)
+ */
+
+/* 
 $test = new StoreProduct('acer','bigfatwide monitor','1399.35');
-pre_r($test);
-
-// ================================
-// = PUT ON GITHUB AND PUSH OFTEN =
-// ================================
-
-pre_r($instanceStoreProduct);
-echo $instanceStoreProduct->getName();
-echo $instanceStoreProduct->getModel();
-echo $instanceStoreProduct->getPrice();
+echo "<pre>";
+print_r($test);
+echo "</pre>"; */
+/* 
+StoreProduct Object
+(
+	[name:StoreProduct:private] => acer
+	[model:StoreProduct:private] => bigfatwide monitor
+	[price:StoreProduct:private] => 1399.35
+)
+ */
 
 
 exit;
-
-/* 
-create an additional class that, given a store's url, will do the following: 
-1.  Get the content for the page [done]
-2.  Pull out the name, model, and price [done] 
-3.  Create a new StoreProduct object using that data [done]
-4.  Return the StoreProduct Object 
-*/ 
 
 
 
