@@ -27,10 +27,10 @@ echo $instanceStoreProduct->getPrice() . '<br />';
 /* 
 DellProduct Object
 (
-	[url:DellProduct:private] => 
-	[name:StoreProduct:private] => Acer Ultrawide Monitor
-	[model:StoreProduct:private] => AUM 558
-	[price:StoreProduct:private] => 699.95
+    [url:DellProduct:private] => https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monitor-aw3420dw/apd/210-atzq/monitors-monitor-accessories
+    [name:StoreProduct:private] => Alienware 34 Curved Gaming Monitor - AW3420DW
+    [model:StoreProduct:private] => 7TJ7D
+    [price:StoreProduct:private] => 1139.99
 )
  */
 

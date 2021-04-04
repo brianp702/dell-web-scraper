@@ -1,5 +1,5 @@
 <?php
-// TODO : fix all variable names, classname, etc
+// TODO: does it make sense to use foreach for DOMDocument query results? We expect only 1 match
 
 /**
  * Dell.com product page scraper (en-us)
@@ -7,7 +7,8 @@
  */
 class DellProduct extends StoreProduct 
 {
-	private $url;
+    // TODO: any benefit to setting the url here?
+	//private $url;
 
 	/**
 	 * DellProduct constructor.
@@ -18,8 +19,10 @@ class DellProduct extends StoreProduct
 	 */
 	public function __construct($url)
 	{		
+        // TODO: any benefit to setting the url?
+        // $this->url = $url;
+
 		// TODO: handle getSiteContents() returning false
-        $this->url = $url;
 		$siteContents = $this->getSiteContents($url);
 		$productPartNumber = $this->getProductPartNumber($siteContents);
 		$productPrice = $this->getProductPrice($siteContents);
@@ -30,6 +33,7 @@ class DellProduct extends StoreProduct
 	
 		// Return StoreProduct object 
 		return $this;
+        // TODO is this returning a StoreProduct object? How to do that?
 	}
 
 	private function getSiteContents($productURL)
