@@ -1,16 +1,6 @@
 <?php
-/*
-Using PHP, scrape the following values from this page, if they exist, store them in an array and output the array to the screen: 
-	https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monitor-aw3420dw/apd/210-atzq/monitors-monitor-accessories
-Values:
-	Product name (string)
-	Manufacturer part number (string)
-	Price (float)
-	Cash back in rewards (int)
-	Coupon code (string)
 
-
-  
+ /* 
 create an additional class that, given a store's url, will do the following: 
 1.  Get the content for the page 
 2.  Pull out the name, model, and price 
@@ -18,28 +8,22 @@ create an additional class that, given a store's url, will do the following:
 4.  Return the StoreProduct Object 
 */ 
 
-function pre_r( $array ) {
-	echo '<pre>';
-	print_r($array);
-	echo '<pre>';
-}
-
 require 'StoreProduct.php';
 require 'NewClass.php';
-
-/* 
-$instance = new StoreProduct('acer','bigfatwide monitor','1399.35');
-echo $instance->getName();
-echo $instance->getModel();
-echo $instance->getPrice(); */
 
 $productURL = 'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monitor-aw3420dw/apd/210-atzq/monitors-monitor-accessories';
 
 // NewClass returns StoreProduct object
 $instanceStoreProduct = new NewClass($productURL);
+
 echo "<pre>";
 print_r($instanceStoreProduct);
 echo "</pre>";
+
+echo $instanceStoreProduct->getName() . '<br />';
+echo $instanceStoreProduct->getModel() . '<br />';
+echo $instanceStoreProduct->getPrice() . '<br />';
+
 /* 
 NewClass Object
 (
@@ -50,19 +34,6 @@ NewClass Object
 )
  */
 
-/* 
-$test = new StoreProduct('acer','bigfatwide monitor','1399.35');
-echo "<pre>";
-print_r($test);
-echo "</pre>"; */
-/* 
-StoreProduct Object
-(
-	[name:StoreProduct:private] => acer
-	[model:StoreProduct:private] => bigfatwide monitor
-	[price:StoreProduct:private] => 1399.35
-)
- */
 
 
 exit;
@@ -72,19 +43,15 @@ exit;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+Using PHP, scrape the following values from this page, if they exist, store them in an array and output the array to the screen: 
+	https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monitor-aw3420dw/apd/210-atzq/monitors-monitor-accessories
+Values:
+	Product name (string)
+	Manufacturer part number (string)
+	Price (float)
+	Cash back in rewards (int)
+	Coupon code (string)
 
 /* 
   Dell.com product page scraper   
