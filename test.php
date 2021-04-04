@@ -1,6 +1,6 @@
 <?php
 /* 
-    given this StoreProduct class.....
+	given this StoreProduct class.....
 */
 class StoreProduct { 
 	private $name; 
@@ -37,30 +37,23 @@ given a store's url, will do the following:
 4.  Return the StoreProduct Object 
 */
 class NewClass extends StoreProduct {
-    // given a store's url
+	// given a store's url
 	private $url;
 
 	public function __construct($url){
-		//$this->url = $url;
 
-        // do web scraping to pull out the name, model, price....
-        // results
-        $productName = "Acer Ultrawide Monitor";
-        $productPartNumber = "AUM 558";
-        $productPrice = "699.95";
+		// do web scraping to pull out the name, model, price....
+		// results
+		$productName = "Acer Ultrawide Monitor";
+		$productPartNumber = "AUM 558";
+		$productPrice = "699.95";
 
-        // Create a new StoreProduct object using that data 
-        //$StoreProduct = new StoreProduct($productName,$productPartNumber,$productPrice); 
-        parent::__construct($productName,$productPartNumber,$productPrice);
-        
-
-        // these output the expected information
-        echo 'from NewClass.php: ' . $this->getName() . '<br />';
-        echo 'from NewClass.php: ' . $this->getModel() . '<br />';
-        echo 'from NewClass.php: ' . $this->getPrice() . '<br />';            
-        
-        // Return the StoreProduct Object 
-        return $this;	
+		// Create a new StoreProduct object using that data 
+		//$StoreProduct = new StoreProduct($productName,$productPartNumber,$productPrice); 
+		parent::__construct($productName,$productPartNumber,$productPrice);
+	   
+		// Return the StoreProduct Object 
+		return $this;	
 	}
 }
 
@@ -75,11 +68,12 @@ echo "<pre>";
 print_r($instanceStoreProduct);
 echo "</pre>";
 /* 
- NewClass Object ( 
-    [url:NewClass:private] => 
-    [name:StoreProduct:private] => 
-    [model:StoreProduct:private] => 
-    [price:StoreProduct:private] => 
+NewClass Object
+(
+	[url:NewClass:private] => 
+	[name:StoreProduct:private] => Acer Ultrawide Monitor
+	[model:StoreProduct:private] => AUM 558
+	[price:StoreProduct:private] => 699.95
 )
  */
 
@@ -89,10 +83,12 @@ echo "<pre>";
 print_r($test);
 echo "</pre>";
 /* 
-StoreProduct Object ( 
-    [name:StoreProduct:private] => acer 
-    [model:StoreProduct:private] => bigfatwide monitor 
-    [price:StoreProduct:private] => 1399.35 
+StoreProduct Object
+(
+	[name:StoreProduct:private] => acer
+	[model:StoreProduct:private] => bigfatwide monitor
+	[price:StoreProduct:private] => 1399.35
+)
 ) 
  */
 
