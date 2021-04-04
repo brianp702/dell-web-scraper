@@ -1,17 +1,23 @@
 <?php
-/*
-Please create an additional class that, 
-given a store's url, will do the following: 
-1.  Get the content for the page 
-2.  Pull out the name, model, and price 
-3.  Create a new StoreProduct object using that data 
-4.  Return the StoreProduct Object 
-*/
-class NewClass extends StoreProduct {
+
+/**
+ * Dell.com web scraper
+ * known issues: doesn't work for laptops or "deals"
+ */
+class NewClass extends StoreProduct 
+{
 	private $url;
 
-	public function __construct($url){
-		//$this->url = $url;
+	/**
+     * NewClass constructor.
+     *
+     * @param string $url String with the URL of a product page at Dell.com
+	 * 
+     */
+	public function __construct($url)
+	{
+		// TODO ???????????
+        // TODO ?? $this->url = $url;
 
 		$html = file_get_contents($url);
 		$dell_doc = new DOMDocument();
@@ -23,27 +29,28 @@ class NewClass extends StoreProduct {
 			libxml_clear_errors();        
 			$dell_xpath = new DOMXPath($dell_doc);
 	
+            // TODO put in a method
 			// product name
 			$dell_row = $dell_xpath->query('//*[@id="page-title"]/div[1]/div/h1/span');        
 			if($dell_row->length > 0){
 				foreach($dell_row as $row){
-					//$scrapeResultArray[$item]['ProductName'] = trim($row->nodeValue);
 					$productName = trim($row->nodeValue);
 					// TODO (string)
 				}
 			}    
-	
+            
+            // TODO put in a method
 			// part number (model)
 			$dell_row = $dell_xpath->query("//*[contains(concat(' ', @class, ' '), ' ps-product-info ')]");
 			if($dell_row->length > 0){
 				foreach($dell_row as $row){
 					preg_match('/Manufacturer part (.*?) \|/', $row->nodeValue, $matches);
-					// $scrapeResultArray[$item]['PartNumber'] = $matches[1];
 					$productPartNumber = $matches[1];
 					// TODO (string)
 				}
 			}    
-	
+            
+            // TODO put in a method
 			// price (float)
 			$dell_row = $dell_xpath->query("//*[contains(concat(' ', @class, ' '), ' ps-dell-price ')]");        
 			if($dell_row->length > 0){
@@ -52,7 +59,6 @@ class NewClass extends StoreProduct {
 					$removeDollarSign = str_replace('$','',trim($row->nodeValue));
 					$removeComma = str_replace(',','', $removeDollarSign);
 					// TODO (float)
-					//$scrapeResultArray[$item]['Price'] = $removeComma;
 					$productPrice = $removeComma;
 				}
 			}
@@ -62,19 +68,17 @@ class NewClass extends StoreProduct {
 			echo 'from NewClass.php: ' . $StoreProductInstance->getModel() . '<br />';
 			echo 'from NewClass.php: ' . $StoreProductInstance->getPrice() . '<br />';            
 			
-			return $StoreProductInstance;
+			// Create a new StoreProduct object using the scraped data
+            parent::__construct($productName,$productPartNumber,$productPrice);
+        
+            // Return the StoreProduct Object 
+            return $this;	
 			
 		} else {
-			// no page retrieved
+			// TODO no page retrieved
 		}
 		
 	}
 }
-/*
-create an additional class that, given a store's url, will do the following: 
-1.  Get the content for the page 
-2.  Pull out the name, model, and price 
-3.  Create a new StoreProduct object using that data 
-4.  Return the StoreProduct Object 
-*/ 
+
 ?>
