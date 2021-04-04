@@ -37,8 +37,8 @@ $productURL = 'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monito
 
 // NewClass returns StoreProduct object
 $instanceStoreProduct = new NewClass($productURL);
-
-
+$test = new StoreProduct('acer','bigfatwide monitor','1399.35');
+pre_r($test);
 
 // ================================
 // = PUT ON GITHUB AND PUSH OFTEN =
@@ -54,9 +54,9 @@ exit;
 
 /* 
 create an additional class that, given a store's url, will do the following: 
-1.  Get the content for the page 
-2.  Pull out the name, model, and price 
-3.  Create a new StoreProduct object using that data 
+1.  Get the content for the page [done]
+2.  Pull out the name, model, and price [done] 
+3.  Create a new StoreProduct object using that data [done]
 4.  Return the StoreProduct Object 
 */ 
 
@@ -131,7 +131,7 @@ foreach ($dellURLArray as $item){
 			foreach($dell_row as $row){
 			   // echo trim($row->nodeValue);                
 				$scrapeResultArray[$item]['ProductName'] = trim($row->nodeValue);
-				// (string)
+				// TODO (string)
 			}
 		} else {
 		   // echo 'BUZZER';
@@ -149,7 +149,7 @@ foreach ($dellURLArray as $item){
 				preg_match('/Manufacturer part (.*?) \|/', $row->nodeValue, $matches);
 				//echo trim($matches[1]);
 				$scrapeResultArray[$item]['PartNumber'] = $matches[1];
-				// (string)
+				//TODO (string)
 			}
 		} else {
 		   // echo 'BUZZER';
@@ -167,7 +167,7 @@ foreach ($dellURLArray as $item){
 				// TODO: make it work for any currency format
 				$removeDollarSign = str_replace('$','',trim($row->nodeValue));
 				$removeComma = str_replace(',','', $removeDollarSign);
-				//echo (float) $removeComma;
+				//TODO (float)
 				$scrapeResultArray[$item]['Price'] = $removeComma;
 			}
 		} else {
@@ -185,7 +185,7 @@ foreach ($dellURLArray as $item){
 			foreach($dell_row as $row){
 				//echo trim($row->nodeValue);
 				preg_match('/Up to \$(.*?) back/', trim($row->nodeValue), $matches);
-				//echo (int) $matches[1];
+				//TODO (int) $matches[1];
 				$scrapeResultArray[$item]['CashBack'] = $matches[1];
 				// (int)
 			}
@@ -197,7 +197,7 @@ foreach ($dellURLArray as $item){
 
 
 
-		// coupon codes (string)
+		// TODO coupon codes (string)
 		// can't find any mention of coupon codes on these product pages
 		$scrapeResultArray[$item]['CouponCode'] = '';
 	   /*  $dell_row = $dell_xpath->query('');

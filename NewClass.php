@@ -29,7 +29,7 @@ class NewClass extends StoreProduct {
 				foreach($dell_row as $row){
 					//$scrapeResultArray[$item]['ProductName'] = trim($row->nodeValue);
 					$productName = trim($row->nodeValue);
-					// (string)
+					// TODO (string)
 				}
 			}    
 	
@@ -40,7 +40,7 @@ class NewClass extends StoreProduct {
 					preg_match('/Manufacturer part (.*?) \|/', $row->nodeValue, $matches);
 					// $scrapeResultArray[$item]['PartNumber'] = $matches[1];
 					$productPartNumber = $matches[1];
-					// (string)
+					// TODO (string)
 				}
 			}    
 	
@@ -51,18 +51,18 @@ class NewClass extends StoreProduct {
 					// TODO: make it work for any currency format
 					$removeDollarSign = str_replace('$','',trim($row->nodeValue));
 					$removeComma = str_replace(',','', $removeDollarSign);
-					//echo (float) $removeComma;
+					// TODO (float)
 					//$scrapeResultArray[$item]['Price'] = $removeComma;
 					$productPrice = $removeComma;
 				}
 			}
 
-			$StoreProduct = new StoreProduct($productName,$productPartNumber,$productPrice);
-			echo 'from NewClass.php: ' . $StoreProduct->getName() . '<br />';
-			echo 'from NewClass.php: ' . $StoreProduct->getModel() . '<br />';
-			echo 'from NewClass.php: ' . $StoreProduct->getPrice() . '<br />';            
+			$StoreProductInstance = new StoreProduct($productName,$productPartNumber,$productPrice);
+			echo 'from NewClass.php: ' . $StoreProductInstance->getName() . '<br />';
+			echo 'from NewClass.php: ' . $StoreProductInstance->getModel() . '<br />';
+			echo 'from NewClass.php: ' . $StoreProductInstance->getPrice() . '<br />';            
 			
-			return $StoreProduct;
+			return $StoreProductInstance;
 			
 		} else {
 			// no page retrieved
