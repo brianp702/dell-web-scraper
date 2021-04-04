@@ -24,7 +24,7 @@ class DellProduct extends StoreProduct
 		$productPrice = $this->getProductPrice($siteContents);
 		$productName = $this->getProductName($siteContents);
 
-		$StoreProductInstance = new StoreProduct($productName,$productPartNumber,$productPrice);          
+		//$StoreProductInstance = new StoreProduct($productName,$productPartNumber,$productPrice);          
 		
 		// Create a new StoreProduct object using the scraped data
 		parent::__construct($productName,$productPartNumber,$productPrice);

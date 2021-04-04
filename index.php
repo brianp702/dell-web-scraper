@@ -9,12 +9,12 @@ create an additional class that, given a store's url, will do the following:
 */ 
 
 require 'StoreProduct.php';
-require 'NewClass.php';
+require 'DellProduct.php';
 
 $productURL = 'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monitor-aw3420dw/apd/210-atzq/monitors-monitor-accessories';
 
-// NewClass returns StoreProduct object
-$instanceStoreProduct = new NewClass($productURL);
+// DellProduct returns StoreProduct object
+$instanceStoreProduct = new DellProduct($productURL);
 
 echo "<pre>";
 print_r($instanceStoreProduct);
@@ -25,9 +25,9 @@ echo $instanceStoreProduct->getModel() . '<br />';
 echo $instanceStoreProduct->getPrice() . '<br />';
 
 /* 
-NewClass Object
+DellProduct Object
 (
-	[url:NewClass:private] => 
+	[url:DellProduct:private] => 
 	[name:StoreProduct:private] => Acer Ultrawide Monitor
 	[model:StoreProduct:private] => AUM 558
 	[price:StoreProduct:private] => 699.95
