@@ -2,8 +2,8 @@
 // TODO : fix all variable names, classname, etc
 
 /**
- * Dell.com web scraper
- * known issues: doesn't work for laptops or "deals"
+ * Dell.com product page scraper (en-us)
+ * known issues: doesn't work for some product categories, such as laptops and "deals"
  */
 class DellProduct extends StoreProduct 
 {
@@ -18,32 +18,31 @@ class DellProduct extends StoreProduct
 	 */
 	public function __construct($url)
 	{		
-		// TODO: catch getSiteContents() returning false
+		// TODO: handle getSiteContents() returning false
+        $this->url = $url;
 		$siteContents = $this->getSiteContents($url);
 		$productPartNumber = $this->getProductPartNumber($siteContents);
 		$productPrice = $this->getProductPrice($siteContents);
 		$productName = $this->getProductName($siteContents);
-
-		//$StoreProductInstance = new StoreProduct($productName,$productPartNumber,$productPrice);          
 		
 		// Create a new StoreProduct object using the scraped data
 		parent::__construct($productName,$productPartNumber,$productPrice);
 	
-		// Return StoreProduct Object 
+		// Return StoreProduct object 
 		return $this;
 	}
 
 	private function getSiteContents($productURL)
 	{
 		$html = file_get_contents($productURL);
-		$dell_doc = new DOMDocument();
+		$dellDOMDoc = new DOMDocument();
 		libxml_use_internal_errors(TRUE);
 	
 		if(!empty($html)){	
-			$dell_doc->loadHTML($html);
+			$dellDOMDoc->loadHTML($html);
 			libxml_clear_errors();        
-			$dell_xpath = new DOMXPath($dell_doc);
-			return $dell_xpath;
+			$dellDOMXPath = new DOMXPath($dellDOMDoc);
+			return $dellDOMXPath;
 		} else {
 			return false;
 		}
@@ -51,46 +50,35 @@ class DellProduct extends StoreProduct
 	
 	private function getProductName($DOMDocument)
 	{
-		// product name
-		$dell_row = $DOMDocument->query('//*[@id="page-title"]/div[1]/div/h1/span');        
-		if($dell_row->length > 0){
-			// TODO: don't loop, because there is only 1 result
-			foreach($dell_row as $row){
+		$dellQuery = $DOMDocument->query('//*[@id="page-title"]/div[1]/div/h1/span');
+		if($dellQuery->length > 0){
+			foreach($dellQuery as $row){
 				$productName = trim($row->nodeValue);
-				return $productName;
-				// TODO (string)
+				return (string) $productName;
 			}
 		} 
 	}
 	
 	private function getProductPartNumber($DOMDocument)
 	{
-		// part number (model)
-		$dell_row = $DOMDocument->query("//*[contains(concat(' ', @class, ' '), ' ps-product-info ')]");
-		if($dell_row->length > 0){
-			// TODO: don't loop, because there is only 1 result
-			foreach($dell_row as $row){
+		$dellQuery = $DOMDocument->query("//*[contains(concat(' ', @class, ' '), ' ps-product-info ')]");
+		if($dellQuery->length > 0){
+			foreach($dellQuery as $row){
 				preg_match('/Manufacturer part (.*?) \|/', $row->nodeValue, $matches);
 				$productPartNumber = $matches[1];
-				return $productPartNumber;
-				// TODO (string)
+				return (string) $productPartNumber;
 			}
 		}  
 	}
 	
 	private function getProductPrice($DOMDocument)
 	{
-		// TODO put in a method
-		$dell_row = $DOMDocument->query("//*[contains(concat(' ', @class, ' '), ' ps-dell-price ')]");        
-		if($dell_row->length > 0){
-			// TODO: don't loop, because there is only 1 result
-			foreach($dell_row as $row){
-				// TODO: make it work for any currency format
+		$dellQuery = $DOMDocument->query("//*[contains(concat(' ', @class, ' '), ' ps-dell-price ')]");        
+		if($dellQuery->length > 0){
+			foreach($dellQuery as $row){
 				$removeDollarSign = str_replace('$','',trim($row->nodeValue));
-				$removeComma = str_replace(',','', $removeDollarSign);
-				$productPrice = $removeComma;
-				return $productPrice;
-				// TODO (float)
+				$productPrice = str_replace(',','', $removeDollarSign);
+				return (float) $productPrice;
 			}
 		}		
 	}
