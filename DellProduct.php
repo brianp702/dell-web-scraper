@@ -7,8 +7,8 @@
  */
 class DellProduct extends StoreProduct 
 {
-    // TODO: any benefit to setting the url here?
-	//private $url;
+    // TODO: does constructor argument always go here also?
+	private $url;
 
 	/**
 	 * DellProduct constructor.
@@ -28,11 +28,11 @@ class DellProduct extends StoreProduct
 		$productPrice = $this->getProductPrice($siteContents);
 		$productName = $this->getProductName($siteContents);
 		
-		// Create a new StoreProduct object using the scraped data
-		parent::__construct($productName,$productPartNumber,$productPrice);
-	
+		// Create a new StoreProduct object using the scraped data, return it
+		return parent::__construct($productName,$productPartNumber,$productPrice);
+		
 		// Return StoreProduct object 
-		return $this;
+		//return $this;
         // TODO is this returning a StoreProduct object? How to do that?
 	}
 
