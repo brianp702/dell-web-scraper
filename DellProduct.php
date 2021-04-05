@@ -7,7 +7,6 @@
  */
 class DellProduct extends StoreProduct 
 {
-    // TODO: does constructor argument always go here also?
 	private $url;
 
 	/**
@@ -18,9 +17,8 @@ class DellProduct extends StoreProduct
 	 * @return StoreProduct
 	 */
 	public function __construct($url)
-	{		
-        // TODO: any benefit to setting the url?
-        // $this->url = $url;
+	{	
+		$this->url = $url;
 
 		// TODO: handle getSiteContents() returning false
 		$siteContents = $this->getSiteContents($url);
@@ -28,20 +26,13 @@ class DellProduct extends StoreProduct
 		$productPrice = $this->getProductPrice($siteContents);
 		$productName = $this->getProductName($siteContents);
 		
-        parent::__construct($productName,$productPartNumber,$productPrice);
-		// Create a new StoreProduct object using the scraped data, return it
-		
-		// Return StoreProduct object 
-		//return $this;
-        // TODO is this returning a StoreProduct object? How to do that?
+		/* 
+		The assignment says "create a new StoreProduct object using that data".
+		As per print_r, this constructor results in a DellProduct object being returned, with StoreProduct items in it.
+		If print_r is right, then I don't know how to return a StoreProduct data from within this class. 
+		*/
+		parent::__construct($productName,$productPartNumber,$productPrice);
 	}
-/*     
-    private function hoops($productName,$productPartNumber,$productPrice)
-    {
-        //parent::__construct($productName,$productPartNumber,$productPrice);
-        $poop = new StoreProduct($productName,$productPartNumber,$productPrice);
-        return $this;
-    } */
 
 	private function getSiteContents($productURL)
 	{
