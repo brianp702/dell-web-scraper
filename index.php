@@ -19,11 +19,11 @@ $instanceStoreProduct = new DellProduct($productURL);
 echo "<pre>";
 print_r($instanceStoreProduct);
 echo "</pre>";
-
+/* 
 echo $instanceStoreProduct->getName() . '<br />';
 echo $instanceStoreProduct->getModel() . '<br />';
 echo $instanceStoreProduct->getPrice() . '<br />';
-
+ */
 /* 
 DellProduct Object
 (

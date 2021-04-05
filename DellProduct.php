@@ -28,13 +28,20 @@ class DellProduct extends StoreProduct
 		$productPrice = $this->getProductPrice($siteContents);
 		$productName = $this->getProductName($siteContents);
 		
+        parent::__construct($productName,$productPartNumber,$productPrice);
 		// Create a new StoreProduct object using the scraped data, return it
-		return parent::__construct($productName,$productPartNumber,$productPrice);
 		
 		// Return StoreProduct object 
 		//return $this;
         // TODO is this returning a StoreProduct object? How to do that?
 	}
+/*     
+    private function hoops($productName,$productPartNumber,$productPrice)
+    {
+        //parent::__construct($productName,$productPartNumber,$productPrice);
+        $poop = new StoreProduct($productName,$productPartNumber,$productPrice);
+        return $this;
+    } */
 
 	private function getSiteContents($productURL)
 	{
