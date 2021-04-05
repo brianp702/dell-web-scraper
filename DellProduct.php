@@ -1,5 +1,8 @@
 <?php
 // TODO: does it make sense to use foreach for DOMDocument query results? We expect only 1 match
+// TODO: am I doing scraping the best way?
+// TODO: is this class structured correctly for OOP? variables at the top, variable in constructor
+// Can I return StoreProduct object from this class?
 
 /**
  * Dell.com product page scraper (en-us)
@@ -28,8 +31,9 @@ class DellProduct extends StoreProduct
 		
 		/* 
 		The assignment says "create a new StoreProduct object using that data".
-		As per print_r, this constructor results in a DellProduct object being returned, with StoreProduct items in it.
-		If print_r is right, then I don't know how to return a StoreProduct data from within this class. 
+		As per var_dump(), this constructor results in a DellProduct object being returned, with StoreProduct items in it.
+		If var_dump() is right, then I don't know how to return a StoreProduct data from within this class.
+		However, this seems to accomplish the functionality of the assignment.
 		*/
 		parent::__construct($productName,$productPartNumber,$productPrice);
 	}
@@ -38,7 +42,7 @@ class DellProduct extends StoreProduct
 	{
 		$html = file_get_contents($productURL);
 		$dellDOMDoc = new DOMDocument();
-		libxml_use_internal_errors(TRUE);
+		libxml_use_internal_errors(true);
 	
 		if(!empty($html)){	
 			$dellDOMDoc->loadHTML($html);
@@ -85,5 +89,4 @@ class DellProduct extends StoreProduct
 		}		
 	}
 }
-
 ?>
