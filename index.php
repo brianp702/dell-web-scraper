@@ -13,9 +13,9 @@ Values:
   Dell.com product page scraper   
 */
 $dellURLArray = [
-    'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monitor-aw3420dw/apd/210-atzq/monitors-monitor-accessories',
-    'https://www.dell.com/en-us/shop/accessories/apd/341-2939?c=us&l=en&s=dhs&cs=19&sku=341-2939',
-    'https://www.dell.com/en-us/shop/alienware-wireless-gaming-headset-aw988/apd/520-aanp/audio'
+	'https://www.dell.com/en-us/shop/alienware-34-curved-gaming-monitor-aw3420dw/apd/210-atzq/monitors-monitor-accessories',
+	'https://www.dell.com/en-us/shop/accessories/apd/341-2939?c=us&l=en&s=dhs&cs=19&sku=341-2939',
+	'https://www.dell.com/en-us/shop/alienware-wireless-gaming-headset-aw988/apd/520-aanp/audio'
 ];
 
 $scrapeResultArray = [];
@@ -64,19 +64,21 @@ foreach ($dellURLArray as $item){
 		if($dellQuery->length > 0){
 			foreach($dellQuery as $row){
 				preg_match('/Up to \$(.*?) back/', trim($row->nodeValue), $matches);
-                $scrapeResultArray[$item]['CashBack'] = (int) $matches[1];
+				$scrapeResultArray[$item]['CashBack'] = (int) $matches[1];
 			}
 		}
 
 		// TODO coupon codes (string)
-		// can't find any mention of coupon codes on these product pages
+		// there is no mention of coupon codes on these product pages
 		$scrapeResultArray[$item]['CouponCode'] = '';
 		
 	} else {
 		echo 'error connecting to product page';
 	}
 }
+
 echo '<pre>';
 print_r($scrapeResultArray);
 echo '</pre>';
+
 ?>
