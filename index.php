@@ -70,7 +70,7 @@ foreach ($dellURLArray as $item){
 
 		// TODO coupon codes (string)
 		// there is no mention of coupon codes on these product pages
-		$scrapeResultArray[$item]['CouponCode'] = '';
+		// $scrapeResultArray[$item]['CouponCode'] = '';
 		
 	} else {
 		echo 'error connecting to product page';
