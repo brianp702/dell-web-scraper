@@ -53,8 +53,7 @@ class DellProduct extends StoreProduct
 		if(!empty($html)){	
 			$dellDOMDoc->loadHTML($html);
 			libxml_clear_errors();        
-			$dellDOMXPath = new DOMXPath($dellDOMDoc);
-			return $dellDOMXPath;
+			return new DOMXPath($dellDOMDoc);
 		} else {
 			return false;
 		}
@@ -65,8 +64,7 @@ class DellProduct extends StoreProduct
 		$dellQuery = $DOMDocument->query('//*[@id="page-title"]/div[1]/div/h1/span');
 		if($dellQuery->length > 0){
 			foreach($dellQuery as $row){
-				$productName = trim($row->nodeValue);
-				return (string) $productName;
+				return (string) trim($row->nodeValue);
 			}
 		} 
 	}
@@ -77,8 +75,7 @@ class DellProduct extends StoreProduct
 		if($dellQuery->length > 0){
 			foreach($dellQuery as $row){
 				preg_match('/Manufacturer part (.*?) \|/', $row->nodeValue, $matches);
-				$productPartNumber = $matches[1];
-				return (string) $productPartNumber;
+				return (string) $matches[1];
 			}
 		}  
 	}
@@ -89,8 +86,7 @@ class DellProduct extends StoreProduct
 		if($dellQuery->length > 0){
 			foreach($dellQuery as $row){
 				$removeDollarSign = str_replace('$','',trim($row->nodeValue));
-				$productPrice = str_replace(',','', $removeDollarSign);
-				return (float) $productPrice;
+				return (float) str_replace(',','', $removeDollarSign);
 			}
 		}		
 	}
