@@ -1,11 +1,7 @@
 <?php
-// TODO: does it make sense to use foreach for DOMDocument query results? We expect only 1 match
-// TODO: am I doing scraping the best way?
-// TODO: is this class structured correctly for OOP? variables at the top, variable in constructor
-// Can I return StoreProduct object from this class?
-
 /**
  * Dell.com product page scraper (en-us)
+ * 
  * known issues: doesn't work for some product categories, such as laptops and "deals"
  * 
  * For this class to work on different Dell pages (such as laptops and the "deals" subdomain), 
@@ -36,10 +32,10 @@ class DellProduct extends StoreProduct
 		$productName = $this->getProductName($siteContents);
 		
 		/* 
-		The assignment says "create a new StoreProduct object using that data".
-		As per var_dump(), this constructor results in a DellProduct object being returned, with StoreProduct items in it.
-		If var_dump() is right, then I don't know how to return a StoreProduct data from within this class.
-		However, this seems to accomplish the functionality of the assignment.
+		The coding assignment says "create a new StoreProduct object using that data".
+		As per var_dump()/print_r(), this class creates a DellProduct object, with StoreProduct items in it (see test.php).
+		If that's true, I don't know how to return a StoreProduct object from within this class.
+		Besides that, this class seems to have the desired functionality of the assignment.
 		*/
 		parent::__construct($productName,$productPartNumber,$productPrice);
 	}
