@@ -33,8 +33,8 @@ class DellProduct extends StoreProduct
 		
 		/* 
 		The coding assignment says "create a new StoreProduct object using that data".
-		As per var_dump()/print_r(), this class creates a DellProduct object, with StoreProduct items in it (see test.php).
-		If that's true, I don't know how to return a StoreProduct object from within this class.
+		I don't know how to return a StoreProduct object from within this class.
+		var_dump()/print_r() says it's a DellProduct object, with StoreProduct items in it (see test.php).
 		Besides that, this class seems to have the desired functionality of the assignment.
 		*/
 		parent::__construct($productName,$productPartNumber,$productPrice);
