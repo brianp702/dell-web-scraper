@@ -1,4 +1,5 @@
 <?php
+
 class StoreProduct 
 { 
 	private $name; 
@@ -27,4 +28,5 @@ class StoreProduct
 		return $this->price; 
 	}
 }
+
 ?>
