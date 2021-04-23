@@ -9,6 +9,7 @@
  * all known data locations would be tried until success. Or, detect the page type and run the 
  * code specialized for that format.
  * For scraping a different web site, I would make a new class for each one. AmazonProduct, WayfairProduct, etc.
+ *
  */
 class DellProduct extends StoreProduct 
 {
