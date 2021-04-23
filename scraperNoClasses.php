@@ -67,10 +67,6 @@ foreach ($dellURLArray as $item){
 				$scrapeResultArray[$item]['CashBack'] = (int) $matches[1];
 			}
 		}
-
-		// TODO coupon codes (string)
-		// there is no mention of coupon codes on these product pages
-		// $scrapeResultArray[$item]['CouponCode'] = '';
 		
 	} else {
 		echo 'error connecting to product page';
