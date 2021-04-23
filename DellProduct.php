@@ -31,12 +31,6 @@ class DellProduct extends StoreProduct
 		$productPrice = $this->getProductPrice($siteContents);
 		$productName = $this->getProductName($siteContents);
 		
-		/* 
-		The coding assignment says "create a new StoreProduct object using that data".
-		I don't know how to return a StoreProduct object from within this class.
-		var_dump()/print_r() says it's a DellProduct object, with StoreProduct items in it (see test.php).
-		Besides that, this class seems to have the desired functionality of the assignment.
-		*/
 		parent::__construct($productName,$productPartNumber,$productPrice);
 	}
 
