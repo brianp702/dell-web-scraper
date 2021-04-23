@@ -7,7 +7,7 @@ Values:
 	Manufacturer part number (string)
 	Price (float)
 	Cash back in rewards (int)
-	Coupon code (string)
+	Coupon code (string) (ignored because there aren't any coupon codes on the product pages)
 
 /* 
   Dell.com product page scraper   
